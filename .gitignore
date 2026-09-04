@@ -1,7 +1,8 @@
 # Model weights / large binaries
-galileo_weights/**
-!galileo_weights/**/
-!galileo_weights/**/.gitkeep
+galileo_weights/
+src/galileo/weights/**
+!src/galileo/weights/**/
+!src/galileo/weights/**/.gitkeep
 *.pt
 *.pth
 *.ckpt

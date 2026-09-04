@@ -147,10 +147,10 @@ Galileo pretrained weights are available on [Hugging Face](https://huggingface.c
 
 ```bash
 pip install "huggingface_hub[cli]"
-huggingface-cli download nasaharvest/galileo --include "models/**" --local-dir galileo_weights
+huggingface-cli download nasaharvest/galileo --include "models/**" --local-dir src/galileo/weights
 ```
 
-This places the weights at `galileo_weights/models/{nano,base}/`, matching the default `--galileo_encoder_path` in `train_galileo.py`.
+This places the weights at `src/galileo/weights/models/{nano,base}/`, matching the default `--galileo_encoder_path` in `train_galileo.py`.
 
 ---
 

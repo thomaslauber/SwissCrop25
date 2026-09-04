@@ -77,7 +77,7 @@ parser = argparse.ArgumentParser(
 # Galileo model parameters
 parser.add_argument("--model", default="nano", choices=["nano", "base"],
                     help="Galileo model size shorthand (nano or base). Overridden by --galileo_encoder_path if set.")
-parser.add_argument("--galileo_encoder_path", default="galileo_weights/models/nano", type=str,
+parser.add_argument("--galileo_encoder_path", default="src/galileo/weights/models/nano", type=str,
                     help="Path to Galileo weights folder (overrides --model if set explicitly)")
 parser.add_argument("--galileo_patch_size", default=4, type=int, choices=[1, 2, 4, 8],
                     help="Patch size for Galileo encoder (default: 4)")
