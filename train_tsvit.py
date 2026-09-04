@@ -101,7 +101,7 @@ parser.add_argument("--bias_initialization", action="store_true",
 
 # Data parameters
 parser.add_argument("--dataset_folder", type=str, default=None, help="Root of the SwissCrop25 dataset (sentinel2/, labels/, temperature/ subdirs). If not set, falls back to hardcoded HPC paths.")
-parser.add_argument("--label_sheet_file", type=str, default='label_sheet.csv')
+parser.add_argument("--label_sheet_file", type=str, default='SwissCrop25.xlsx')
 parser.add_argument("--num_workers", default=8, type=int)
 parser.add_argument("--num_bands", default=9, type=int)
 parser.add_argument("--train_dataset_portion", default=1.0, type=float)

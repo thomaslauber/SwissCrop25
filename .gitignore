@@ -61,7 +61,6 @@ slurm-*.out
 slurm-output/
 
 # Misc internal files
-SwissCrop25.xlsx
 texput.log
 
 # Presentations

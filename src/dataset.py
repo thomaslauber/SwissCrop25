@@ -119,7 +119,7 @@ class SatelliteDataset(Dataset):
         satellite_paths,
         gt_paths,
         temp_paths,
-        label_sheet_file="./label_sheet.csv",
+        label_sheet_file="./SwissCrop25.xlsx",
         label_columns="4th_tier_ENG",
         ignore_index=None,
         bands=[
