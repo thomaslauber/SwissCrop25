@@ -135,13 +135,20 @@ Complete SLURM run scripts for all experiments and splits are provided in `runSc
 
 ### Galileo weights
 
-Galileo pretrained weights are available on Hugging Face. Download them to `galileo_weights/models/{nano,base}/` before running Galileo experiments.
+Galileo pretrained weights are available on [Hugging Face](https://huggingface.co/nasaharvest/galileo). Download them with:
+
+```bash
+pip install "huggingface_hub[cli]"
+huggingface-cli download nasaharvest/galileo --include "models/**" --local-dir galileo_weights
+```
+
+This places the weights at `galileo_weights/models/{nano,base}/`, matching the default `--galileo_encoder_path` in `train_galileo.py`.
 
 ---
 
 ## Reproducing results
 
-Evaluation metrics are stored as `.pkl` files in `storage/` after training. To reproduce tables and figures from the paper:
+Evaluation metrics are stored as `.pkl` files in `storage/` after training. To reproduce tables and figures from the paper, use the scripts in `scripts/tables/` and `scripts/figures/`. For example:
 
 ```bash
 python scripts/tables/generate_results_table.py
