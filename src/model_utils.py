@@ -1,4 +1,4 @@
-from src.backbones import utae, unet3d, convlstm, convgru, fpn
+from src.utae import utae, unet3d, convlstm, convgru, fpn
 
 
 def get_model(config, mode="semantic"):

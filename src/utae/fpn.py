@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 
-from src.backbones.convlstm import ConvLSTM
+from src.utae.convlstm import ConvLSTM
 
 
 class FPNConvLSTM(nn.Module):

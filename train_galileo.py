@@ -61,7 +61,7 @@ class SkipDistributedSampler(DistributedSampler):
 from src import utils
 from src.utils import zarr_cache
 from src.dataset import SatelliteDataset
-from src.galileo_segmentation import GalileoForSegmentation
+from src.galileo.galileo_segmentation import GalileoForSegmentation
 from src.learning.metrics import confusion_matrix_analysis
 from src.learning.miou import IoU
 from src.utils import calculate_f1_score, compute_ece

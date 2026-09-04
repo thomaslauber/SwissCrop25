@@ -13,8 +13,9 @@ A national benchmark dataset and codebase for operational crop mapping in Switze
 
 ```
 src/                    model architectures and dataset loaders
-  backbones/            U-TAE and supporting modules (L-TAE, FiLM, FPN, ConvLSTM, ConvGRU)
+  utae/                 U-TAE and supporting modules (L-TAE, FiLM, FPN, ConvLSTM, ConvGRU)
   tsvit/                TSViT implementation
+  galileo/              Galileo segmentation wrapper and model definition
   learning/             loss functions and metrics
 train_utae.py           training script for U-TAE
 train_tsvit.py          training script for TSViT

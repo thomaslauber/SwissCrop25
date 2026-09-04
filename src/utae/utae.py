@@ -6,8 +6,8 @@ License: MIT
 import torch
 import torch.nn as nn
 
-from src.backbones.convlstm import ConvLSTM, BConvLSTM
-from src.backbones.ltae import LTAE2d, LTAE2d_TimeChannel
+from src.utae.convlstm import ConvLSTM, BConvLSTM
+from src.utae.ltae import LTAE2d, LTAE2d_TimeChannel
 
 
 class UTAE(nn.Module):
