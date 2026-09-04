@@ -94,6 +94,15 @@ Full per-split and per-class results are reported in the [paper](https://arxiv.o
 
 ## Training
 
+### Temporal encoding
+
+The training scripts support two phenological alignment strategies evaluated in the paper, both applied on top of cloud filtering:
+
+- **T³S** / `gddsub` (`--use_temperature_calendar --use_temperature_subsampling`): thermal time-based temporal subsampling that selects observations at fixed GDD intervals rather than calendar dates ([Turkoglu et al. 2026](https://arxiv.org/abs/2506.12885))
+- **TPE** / `gddpe` (`--use_gdd_pe`): thermal positional encoding that replaces day-of-year timestamps with cumulative GDD ([Nyborg et al. 2022](https://arxiv.org/abs/2203.09175))
+
+The DOY baseline (`cloudsub`) uses cloud filtering with calendar-based timestamps (neither flag). The training examples below use the best-performing configuration per model: T³S + TPE for U-TAE and TSViT, T³S only for Galileo-nano (whose pretrained positional encoding is fixed).
+
 All three models are trained with distributed data-parallel using `torch.distributed.run`. Example for a single node with 4 GPUs (LOYO split S1):
 
 **U-TAE** (GDD substitution + GDD positional encoding):
