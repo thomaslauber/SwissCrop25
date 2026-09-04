@@ -1,0 +1,68 @@
+# Model weights / large binaries
+galileo_weights/
+*.pt
+*.pth
+*.ckpt
+*.model
+*.npz
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Results / outputs
+storage/**/*.pth
+storage/**/*.pt
+storage/**/*.ckpt
+core_*
+
+# Data files
+*.tif
+*.tar.gz
+
+# Jupyter
+.ipynb_checkpoints/
+
+# HuggingFace dataset repos (separate remotes)
+SwissCrop25_hf/
+SwissCrop/
+
+# Local environment / containers
+.venv
+*.sqfs
+
+# Claude Code memory (local only)
+.claude/
+
+# Third-party paper code (not part of this project)
+utae-paps/
+
+# IDE
+.vscode/
+
+# arXiv submission directory
+Lauber_2026_SwissCrop_ECCV26_TerraBytes_arxiv/
+
+# Paper directories (not for public repo)
+Lauber_2026_SwissCrop_ECCV26_TerraBytes/
+Lauber_2026_SwissCrop_ECCV26_TerraBytes_Proceedings/
+Lauber_2026_SwissCrop_ECCV26_TerraBytes_SM/
+Lauber_2026_Crop1990_report/
+
+# Internal documentation
+documentation/
+sbatchScripts/
+results/
+
+# Slurm logs
+slurm-*.out
+slurm-output/
+
+# Misc internal files
+SwissCrop25.xlsx
+texput.log
+
+# Presentations
+*.pptx

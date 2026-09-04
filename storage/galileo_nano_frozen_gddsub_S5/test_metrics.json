@@ -1,0 +1,12 @@
+{
+    "test_accuracy": 79.68497467041016,
+    "test_loss": NaN,
+    "test_IoU": 18.10762596130371,
+    "test_global_IoU": 66.23027801513672,
+    "test_F1": 0.06642557108341877,
+    "test_epoch_time": 2177.1474850177765,
+    "test_ECE": 0.009773748811332212,
+    "test_NLL": 0.6377974914427913,
+    "test_Brier": 0.2794423689944375,
+    "best_epoch": null
+}

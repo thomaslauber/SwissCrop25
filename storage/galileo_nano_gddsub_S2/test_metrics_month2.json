@@ -1,0 +1,8 @@
+{
+    "test_accuracy": 22.448986053466797,
+    "test_IoU": 1.9126756191253662,
+    "test_global_IoU": 12.643681526184082,
+    "test_ECE": 0.5650122258180944,
+    "test_NLL": NaN,
+    "test_Brier": NaN
+}

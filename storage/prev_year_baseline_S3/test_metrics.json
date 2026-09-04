@@ -1,0 +1,6 @@
+{
+  "test_accuracy": 75.0124,
+  "test_global_IoU": 60.0159,
+  "test_IoU": 36.9682,
+  "test_F1": 41.0588
+}

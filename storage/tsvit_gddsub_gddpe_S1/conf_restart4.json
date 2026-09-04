@@ -1,0 +1,193 @@
+{
+    "img_res": 16,
+    "patch_size": 2,
+    "max_seq_len": 24,
+    "dim": 128,
+    "temporal_depth": 4,
+    "spatial_depth": 4,
+    "heads": 4,
+    "dim_head": 32,
+    "scale_dim": 4,
+    "dropout": 0.0,
+    "emb_dropout": 0.0,
+    "pool": "cls",
+    "weight_decay": 0.01,
+    "bias_initialization": true,
+    "dataset_folder": "/srv/data/sentinel2",
+    "label_sheet_file": "/capstor/scratch/cscs/tlauber/020_crop1990/data/LNF_code_classification_20260217.xlsx",
+    "num_workers": 12,
+    "num_bands": 10,
+    "train_dataset_portion": 1.0,
+    "val_dataset_portion": 1.0,
+    "test_dataset_portion": 1.0,
+    "temporal_length": 24,
+    "truncate_month": null,
+    "eval_only": false,
+    "eval_all_months": false,
+    "variable_t": true,
+    "use_temperature_calendar": true,
+    "use_temperature_subsampling": true,
+    "no_sliding_subsample": false,
+    "use_temperature_calendar_no_sliding_subsample": false,
+    "use_fixed_temperature_subsampling": false,
+    "use_upsampling": false,
+    "target_ratio": 0.05,
+    "minority_threshold": 0.0005,
+    "min_class_pixels": 100,
+    "simulate_landsat": false,
+    "revisit_time": 8,
+    "oli_degrade_prob": 0.0,
+    "use_sensor_flag": false,
+    "no_normalize_timestamps": false,
+    "use_gdd_pe": true,
+    "temp_mean_var": "CGDD_mean",
+    "temp_spatial_var": "None",
+    "pad_value": 0,
+    "res_dir": "./storage/tsvit_gddsub_gddpe_S5_variable_t",
+    "checkpoint_dir": "./storage/tsvit_gddsub_gddpe_S5_variable_t",
+    "overwrite": false,
+    "epochs": 15,
+    "pct_start": 0.05,
+    "checkpoint_steps": 500,
+    "batch_size": 4,
+    "accumulate_steps": 4,
+    "lr": 0.001,
+    "lr_start": 0.0001,
+    "lr_end": 1e-07,
+    "fold": null,
+    "num_classes": 71,
+    "ignore_index": 0,
+    "val_every": 1,
+    "rdm_seed": 7777,
+    "seed": 7777,
+    "device": "cuda:2",
+    "display_step": 50,
+    "cache": false,
+    "satellite": "sentinel",
+    "ablation_split": "S5",
+    "use_class_balance_loss": true,
+    "beta_class_balance": 0.99999,
+    "w_ce": 1.0,
+    "w_focal": 0,
+    "w_dice": 0,
+    "w_logcosh_dice": 0,
+    "w_kl": 0,
+    "focal_gamma": 2,
+    "test_years": [
+        2021
+    ],
+    "bands": [
+        "s2_B02",
+        "s2_B03",
+        "s2_B04",
+        "s2_B08",
+        "s2_B05",
+        "s2_B06",
+        "s2_B07",
+        "s2_B8A",
+        "s2_B11",
+        "s2_B12"
+    ],
+    "cloud_band": "s2_mask",
+    "cgdd_bounds": "/users/tlauber/scratch/020_crop1990/data/CGDD_bounds/cgdd_bounds_S2_1991_2020.gpkg",
+    "satellite_train": [
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2019.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2022.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2023.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2024.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2025.json"
+    ],
+    "satellite_val": [
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2020.json"
+    ],
+    "satellite_test": [
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2021.json"
+    ],
+    "gt_train": [
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2019.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2022.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2023.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2024.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2025.tar.json"
+    ],
+    "gt_val": [
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2020.tar.json"
+    ],
+    "gt_test": [
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2021.tar.json"
+    ],
+    "temp_train": [
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2019.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2022.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2023.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2024.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2025.json"
+    ],
+    "temp_val": [
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2020.json"
+    ],
+    "temp_test": [
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2021.json"
+    ],
+    "label_columns": [
+        "Crop_Label",
+        "Crop_Label_lv2",
+        "Crop_Label_lv3"
+    ],
+    "restart": true,
+    "restart_epoch": 4,
+    "use_latest_checkpoint": true,
+    "resume_step": 0,
+    "amp_dtype": "torch.bfloat16",
+    "base_lr": 0.001,
+    "channel_stats": {
+        "s2_B02": {
+            "mean": 4412.463662784546,
+            "std": 3895.7724012187664
+        },
+        "s2_B03": {
+            "mean": 4328.646596667953,
+            "std": 3649.504706678468
+        },
+        "s2_B04": {
+            "mean": 4214.881544840987,
+            "std": 3621.99023122011
+        },
+        "s2_B05": {
+            "mean": 4545.021636104915,
+            "std": 3570.179260477139
+        },
+        "s2_B06": {
+            "mean": 4953.147514833354,
+            "std": 3092.042036924853
+        },
+        "s2_B07": {
+            "mean": 5047.967631944377,
+            "std": 2910.286028365789
+        },
+        "s2_B08": {
+            "mean": 5142.54375581785,
+            "std": 2931.217800959361
+        },
+        "s2_B11": {
+            "mean": 2599.2835265393733,
+            "std": 1680.8674869955207
+        },
+        "s2_B12": {
+            "mean": 2139.204565227643,
+            "std": 1522.21247888374
+        },
+        "s2_B8A": {
+            "mean": 5075.8119308377745,
+            "std": 2765.400999800123
+        }
+    },
+    "gdd_stats": {
+        "mean": 1300.03,
+        "std": 1253.74
+    },
+    "gdd_mean_var": "CGDD_mean",
+    "gdd_spatial_var": null,
+    "use_spatial_gdd": false,
+    "N_params": 1607172
+}

@@ -1,0 +1,185 @@
+{
+    "img_res": 16,
+    "patch_size": 2,
+    "max_seq_len": 24,
+    "dim": 128,
+    "temporal_depth": 4,
+    "spatial_depth": 4,
+    "heads": 4,
+    "dim_head": 32,
+    "scale_dim": 4,
+    "dropout": 0.0,
+    "emb_dropout": 0.0,
+    "pool": "cls",
+    "weight_decay": 0.01,
+    "bias_initialization": true,
+    "dataset_folder": "/srv/data/sentinel2",
+    "label_sheet_file": "/capstor/scratch/cscs/tlauber/020_crop1990/data/LNF_code_classification_20260217.xlsx",
+    "num_workers": 12,
+    "num_bands": 10,
+    "train_dataset_portion": 0.1,
+    "val_dataset_portion": 1.0,
+    "test_dataset_portion": 1.0,
+    "temporal_length": 24,
+    "use_temperature_calendar": true,
+    "use_temperature_subsampling": true,
+    "no_sliding_subsample": false,
+    "use_temperature_calendar_no_sliding_subsample": false,
+    "use_fixed_temperature_subsampling": false,
+    "use_upsampling": false,
+    "target_ratio": 0.05,
+    "minority_threshold": 0.0005,
+    "min_class_pixels": 100,
+    "simulate_landsat": false,
+    "revisit_time": 8,
+    "oli_degrade_prob": 0.0,
+    "use_sensor_flag": false,
+    "no_normalize_timestamps": false,
+    "temp_mean_var": "CGDD_mean",
+    "temp_spatial_var": "None",
+    "pad_value": 0,
+    "res_dir": "./storage/tsvit_10pct_S5",
+    "checkpoint_dir": "./storage/tsvit_10pct_S5",
+    "overwrite": false,
+    "epochs": 15,
+    "pct_start": 0.05,
+    "checkpoint_steps": 500,
+    "batch_size": 4,
+    "accumulate_steps": 4,
+    "lr": 0.001,
+    "lr_start": 0.0001,
+    "lr_end": 1e-07,
+    "fold": null,
+    "num_classes": 71,
+    "ignore_index": 0,
+    "val_every": 1,
+    "rdm_seed": 7777,
+    "seed": 7777,
+    "device": "cuda:0",
+    "display_step": 50,
+    "cache": false,
+    "satellite": "sentinel",
+    "ablation_split": "S5",
+    "use_class_balance_loss": true,
+    "beta_class_balance": 0.99999,
+    "w_ce": 1.0,
+    "w_focal": 0,
+    "w_dice": 0,
+    "w_logcosh_dice": 0,
+    "w_kl": 0,
+    "focal_gamma": 2,
+    "bands": [
+        "s2_B02",
+        "s2_B03",
+        "s2_B04",
+        "s2_B08",
+        "s2_B05",
+        "s2_B06",
+        "s2_B07",
+        "s2_B8A",
+        "s2_B11",
+        "s2_B12"
+    ],
+    "cloud_band": "s2_mask",
+    "cgdd_bounds": "/users/tlauber/scratch/020_crop1990/data/CGDD_bounds/cgdd_bounds_S2_1991_2020.gpkg",
+    "satellite_train": [
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2019.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2022.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2023.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2024.json",
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2025.json"
+    ],
+    "satellite_val": [
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2020.json"
+    ],
+    "satellite_test": [
+        "/capstor/store/cscs/2go/go57/data/satellite/sentinel2/raw/CH/2021.json"
+    ],
+    "gt_train": [
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2019.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2022.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2023.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2024.tar.json",
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2025.tar.json"
+    ],
+    "gt_val": [
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2020.tar.json"
+    ],
+    "gt_test": [
+        "/capstor/scratch/cscs/tlauber/020_crop1990/data/GTs_Sentinel/2021.tar.json"
+    ],
+    "temp_train": [
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2019.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2022.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2023.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2024.json",
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2025.json"
+    ],
+    "temp_val": [
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2020.json"
+    ],
+    "temp_test": [
+        "/capstor/store/cscs/2go/go57/data/climate/cgdd/sentinel/2021.json"
+    ],
+    "label_columns": [
+        "Crop_Label",
+        "Crop_Label_lv2",
+        "Crop_Label_lv3"
+    ],
+    "restart": false,
+    "restart_epoch": null,
+    "use_latest_checkpoint": false,
+    "resume_step": 0,
+    "amp_dtype": "torch.bfloat16",
+    "base_lr": 0.001,
+    "channel_stats": {
+        "s2_B02": {
+            "mean": 4388.366317543308,
+            "std": 3892.8210392751516
+        },
+        "s2_B03": {
+            "mean": 4305.4989564899315,
+            "std": 3645.099944345954
+        },
+        "s2_B04": {
+            "mean": 4190.9175610932025,
+            "std": 3617.360848195256
+        },
+        "s2_B05": {
+            "mean": 4522.882426847296,
+            "std": 3566.2049100737054
+        },
+        "s2_B06": {
+            "mean": 4937.259193141079,
+            "std": 3087.502425973375
+        },
+        "s2_B07": {
+            "mean": 5035.5869591363435,
+            "std": 2906.4584029286866
+        },
+        "s2_B08": {
+            "mean": 5133.8527537969785,
+            "std": 2929.4698152265614
+        },
+        "s2_B11": {
+            "mean": 2604.5343604417367,
+            "std": 1682.3495148982802
+        },
+        "s2_B12": {
+            "mean": 2142.254670599968,
+            "std": 1524.140453845172
+        },
+        "s2_B8A": {
+            "mean": 5064.491581373055,
+            "std": 2762.046666141967
+        }
+    },
+    "gdd_stats": {
+        "mean": 1300.03,
+        "std": 1253.74
+    },
+    "gdd_mean_var": "CGDD_mean",
+    "gdd_spatial_var": null,
+    "use_spatial_gdd": false,
+    "N_params": 1607172
+}
