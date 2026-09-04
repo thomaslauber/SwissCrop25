@@ -86,6 +86,10 @@ Results under the LOYO protocol (mean ± std across five splits, best temporal e
 
 Full per-split and per-class results are reported in the [paper](https://arxiv.org/abs/2608.09497).
 
+![In-season OA and mIoU](./assets/inseason_miou_oa.png)
+
+*In-season OA (left) and mIoU (right) as a function of month cutoff (mean ±1 std across five LOYO splits). U-TAE leads early-season OA; TSViT gains a late-season advantage in mIoU.*
+
 ---
 
 ## Training
