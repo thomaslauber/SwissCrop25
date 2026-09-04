@@ -30,28 +30,6 @@ storage/                per-experiment evaluation metrics (.pkl)
 
 ---
 
-## Environment
-
-### Training
-
-Built on [NVIDIA PyTorch container 24.12](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-24-12.html). Additional packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-### Preprocessing
-
-Built on the [b-data R+QGIS devcontainer](https://github.com/b-data/data-science-devcontainers/blob/main/.devcontainer/r-qgisprocess/devcontainer.json). Additional Python packages:
-
-```bash
-pip install -r requirements_preprocess.txt
-```
-
-The ground truth generation script (`scripts/preprocessing/generateGT.py`) calls R via subprocess. Required R packages: `terra`, `stars`, `sf`, `exactextractr`, `optparse`.
-
----
-
 ## Dataset
 
 The dataset is hosted on Hugging Face: [EOA-team/SwissCrop25](https://huggingface.co/datasets/EOA-team/SwissCrop25). Download it and pass the root via `--dataset_folder`:
@@ -141,6 +119,26 @@ python -m torch.distributed.run --nproc_per_node=4 train_galileo.py \
 ```
 
 Complete SLURM run scripts for all experiments and splits are provided in `runScripts/`.
+
+### Environment
+
+#### Training
+
+Built on [NVIDIA PyTorch container 24.12](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-24-12.html). Additional packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+#### Preprocessing
+
+Built on the [b-data R+QGIS devcontainer](https://github.com/b-data/data-science-devcontainers/blob/main/.devcontainer/r-qgisprocess/devcontainer.json). Additional Python packages:
+
+```bash
+pip install -r requirements_preprocess.txt
+```
+
+The ground truth generation script (`scripts/preprocessing/generateGT.py`) calls R via subprocess. Required R packages: `terra`, `stars`, `sf`, `exactextractr`, `optparse`.
 
 ### Galileo weights
 
