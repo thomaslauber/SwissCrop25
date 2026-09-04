@@ -1713,20 +1713,19 @@ class SatelliteDataset(Dataset):
 
                 # Cache the group
                 if path not in zarr_cache:
-                    fs = fsspec.filesystem(
-                        "reference",
-                        fo=path,
-                        remote_options={"fo": path[:-5]}
-                    )
-                    mapper = fs.get_mapper("")
-                    # Open WITHOUT consolidated metadata: zarr ≥2.17 auto-detects .zmetadata
-                    # and uses it, which causes KeyError for tiles absent from that index.
+                    # Resolve relative template paths to absolute, matching _load_zarr Case 2
+                    _base = os.path.dirname(os.path.abspath(path))
+                    if "templates" in ref_data:
+                        ref_data["templates"] = {
+                            k: os.path.join(_base, v) if not os.path.isabs(v) and "://" not in v else v
+                            for k, v in ref_data["templates"].items()
+                        }
+                    mapper = fsspec.filesystem("reference", fo=ref_data).get_mapper("")
                     try:
                         zarr_group = zarr.open_group(mapper, mode="r", use_consolidated=False)
                     except TypeError:
                         zarr_group = zarr.open_group(mapper, mode="r")
                     zarr_cache[path] = zarr_group
-                    # print(f"Cached JSON reference: {path}")
 
                 data_sources[path] = (zarr_cache[path], file_names)
 
