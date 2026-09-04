@@ -1,26 +1,41 @@
 #!/bin/bash
-set -e
+set -e  # Stop if any command fails
 
+############################
+### Print Slurm Commands ###
+############################
 if [ "$SLURM_NODEID" == "0" ]; then
-    echo "===== SLURM ENVIRONMENT VARIABLES =====" && env | grep ^SLURM_ && echo "======================================="
+    echo "===== SLURM ENVIRONMENT VARIABLES ====="
+    env | grep ^SLURM_
+    echo "======================================="
 fi
 export PYTHONUNBUFFERED=1
+############################
 
+############################
+### Set environment ########
+############################
 GPUS_PER_NODE=4
 export OMP_NUM_THREADS=1
 export FI_CXI_RDZV_PROTO=alt_read
 export FI_CXI_RDZV_GET_MIN=0
 export FI_CXI_RDZV_THRESHOLD=0
 export FI_CXI_RDZV_EAGER_SIZE=0
+############################
 
+############################
+#### Set network ###########
+############################
 MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
-MASTER_PORT=13360
+MASTER_PORT=13352
+############################
 
+# Activate virtual environment
 ln -sfn /srv/.venv $PWD/.venv
 source .venv/bin/activate
 
-echo "=== eval_all_months: Galileo-nano S1 (single pass, 12 month cutoffs) ==="
-python -m torch.distributed.run \
+bash -c "\
+    python -m torch.distributed.run \
     --nproc_per_node=$GPUS_PER_NODE \
     --nnodes=$SLURM_NNODES \
     --rdzv_backend=c10d \
@@ -28,16 +43,17 @@ python -m torch.distributed.run \
     --max_restarts=0 \
     train_galileo.py \
     --model nano \
+    --freeze_encoder \
+    --accumulate_steps 4 \
     --epochs 15 \
-    --num_workers 12 \
+    --num_workers 16 \
     --bias_initialization \
     --use_temperature_calendar \
     --use_temperature_subsampling \
     --satellite sentinel \
     --w_ce 1.0 \
     --use_class_balance_loss \
+    --val_every 1 \
     --ablation_split S5 \
-    --accumulate_steps 4 \
-    --eval_all_months \
-    --res_dir ./storage/galileo_nano_bench_S5 \
-    --seed 7777
+    --res_dir ./storage/galileo_nano_frozen_gddsub_S5 \
+    --seed 7777"
